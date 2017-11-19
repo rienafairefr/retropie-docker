@@ -1,0 +1,16 @@
+version: "2"
+services:
+  retropie:
+    build: .
+    volumes:
+      - /dev/snd:/dev/snd
+      - /tmp/.X11-unix/:/tmp/.X11-unix/
+      - $HOME/RetroPie/.emulstation:/root/.emulstations
+      - $HOME/RetroPie:/root/RetroPie
+#      - /run/user/$(id -u):/run/user/$(id -u)
+      - /var/run/dbus:/var/run/dbus
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DISPLAY=unix$DISPLAY
+    privileged: true
+    
